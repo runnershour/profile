@@ -123,7 +123,7 @@ func Start(options ...func(*profile)) interface {
 
 	switch prof.mode {
 	case cpuMode:
-		fn := filepath.Join(path, "cpu.pprof")
+		fn := filepath.Join(path, os.Args[0]+"-cpu.pprof")
 		f, err := os.Create(fn)
 		if err != nil {
 			log.Fatalf("profile: could not create cpu profile %q: %v", fn, err)
@@ -138,7 +138,7 @@ func Start(options ...func(*profile)) interface {
 		})
 
 	case memMode:
-		fn := filepath.Join(path, "mem.pprof")
+		fn := filepath.Join(path, os.Args[0]+"-mem.pprof")
 		f, err := os.Create(fn)
 		if err != nil {
 			log.Fatalf("profile: could not create memory profile %q: %v", fn, err)
@@ -155,7 +155,7 @@ func Start(options ...func(*profile)) interface {
 		})
 
 	case blockMode:
-		fn := filepath.Join(path, "block.pprof")
+		fn := filepath.Join(path, os.Args[0]+"-block.pprof")
 		f, err := os.Create(fn)
 		if err != nil {
 			log.Fatalf("profile: could not create block profile %q: %v", fn, err)
